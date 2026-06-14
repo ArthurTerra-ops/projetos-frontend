@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Pokedex</title>
+    
+
+    <link rel="stylesheet" href="style.css">
+       
+</head>
+<body>
+
+    <div id="Header">
+        <h1 id="titulo">Simple Pokedex <button id="themeToggle">🌙</button></h1>
+        <div class="search-box">
+                <form id="searchForm">
+            <input type="text" id="pokemonName" placeholder="Digite o nome do Pokémon">
+            <button type="submit">Search</button>
+            
+        </form>
+        </div>
+    </div>
+    
+   
+    <div id="resultado" >
+        <h2 id="pokemonNameResult">Name:</h2>
+        <img id="pokemonImage" src="" alt="">
+        <div id="pokemonStats">
+            <p id="hp">HP: </p>
+            <p id="attack">Attack: </p>
+            <p id="defense">Defense: </p>
+            <p id="speed">Speed: </p>
+        </div>
+    </div>
+    
+   <!-- esta div será o resultado da busca com o nome, imagem do pokemon e em seguida seus stats-->
+    
+    
+    <div class="Box">
+        <div>
+            <ul id="historyList">Last Search</ul>
+        </div>
+        
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
