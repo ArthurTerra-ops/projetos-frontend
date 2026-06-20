@@ -1,0 +1,192 @@
+:root{
+    --Background_main: #A2A6FF;
+    --Background_Content_On_Use: #fcfcfc; 
+    --Background_Content: #2B2B2B;
+
+    --Input_Main: #0059FF;
+
+    --Text: #ffff;
+    --Text_Reverse: #000000;
+}
+body{
+   display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Garante que o body ocupe a tela toda para centralizar */
+    background-color: var(--Background_main);
+}
+
+body.nightmode{
+--Background_main: #d8b208;
+    --Background_Content_On_Use: #6e9259; 
+    --Background_Content: #525252;
+
+    --Input_Main: #ff9900;
+
+    --Text: #000000;
+    --Text_Reverse: #ffff;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Boa prática para evitar problemas com tamanhos */
+}
+
+
+div#Center{
+  position: relative; 
+    height: 600px;  /* Ajustei um pouco o tamanho para visualização */
+    width: 800px;
+}
+
+.Content, .Content_OnUserView {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.3s ease; /* Opcional: para uma transição suave se mudar de tema */
+}
+.Content {
+    box-shadow: 0px 0px 15px 1px var(--Background_Content_On_Use);
+    border: 2px solid var(--Background_Content_On_Use);
+    border-radius: 1%;
+background-color: var(--Background_Content);
+    z-index: 1;
+}
+.Content_OnUserView {
+    display: grid;
+    grid-template-rows: 60px auto auto auto auto auto auto;
+
+    box-shadow: 0px 0px 15px 1px var(--Background_Content);
+     border: 2px solid var(--Background_Content);
+     border-radius: 1%;
+    background-color: var(--Background_Content_On_Use);
+    z-index: 2; /* Maior z-index para ficar na frente */
+    
+    /* Move levemente para Baixo (Y positivo) e para a Esquerda (X negativo) */
+    transform: translate(-20px, 20px);
+
+    
+}
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 50px;
+}
+.Header > form  {
+    display: block;
+    width: 50%;
+}
+.Header > form > fieldset{
+   border: 1px solid black;
+   border-radius: 15px;
+}
+
+.Header > form > fieldset > #Search{
+    width: 85%;
+    
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bolder;
+}
+.Header > form > fieldset > #Add{
+background-color: var(--Input_Main);
+
+
+color: var(--Text);
+font-family: Arial, Helvetica, sans-serif;
+font-weight: bold;
+
+padding: 5px;
+border-radius:10px ;
+
+
+}
+/*     Lista do usuario em nav     */
+.List {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    
+    /*visibility: hidden;*/
+
+    border-radius: 5px;
+    box-shadow: 3px 2px 6px rgba(0, 0, 0, 0.267);
+
+    height: 30%;
+    width: 75%;
+
+    margin: auto;
+
+    color: var(--Text);
+}
+
+.List > input {
+ width: 20px;
+ height:20px;
+
+}
+.List > input:hover {
+box-shadow: 0px 0px 7px 5px rgba(0, 128, 0, 0.308);
+transition: all .5s ease-in;
+}
+.List p {
+    color: #2B2B2B;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+/*Classes para uso geral*/
+
+.Use_Padding {
+    padding: 6px;
+}
+.No_Border {
+    border: none;
+}
+.Notification {
+   position: fixed; /* Mudamos para fixed para ele ignorar o scroll e fixar na tela */
+    bottom: 20px;    /* Distância de 20px do fundo da página */
+    right: 20px;     /* Distância de 20px da direita da página */
+    
+    width: 200px;    /* Aumentei um pouco a largura para caber o texto melhor */
+    height: 60px;    /* Ajustei a altura para parecer um card de aviso */
+    padding: 15px;   /* Espaçamento interno */
+    border-radius: 8px; /* Cantos arredondados combinando com seu app */
+
+    color: white;
+    background-color: #28a745; /* Um tom de verde mais amigável */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all .5s ease-in-out;
+    z-index: 1000; /* Um z-index bem alto para garantir que fique por cima de tudo */
+    
+    /* Configuração da animação de ENTRADA */
+    animation: slideIn 0.5s ease-out forwards;
+    
+    /* Configuração da transição de SAÍDA */
+    transition: transform 0.5s ease-in, opacity 0.5s ease-in;
+}
+
+.Notification.hide {
+    opacity: 0;
+    transform: translateX(120%); /* Joga o balão para fora da tela pela direita */
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(120%); /* Começa totalmente fora da tela à direita */
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);    /* Termina na posição original dele */
+        opacity: 1;
+    }
+}
